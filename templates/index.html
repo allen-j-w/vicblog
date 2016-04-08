@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blogs</title>
+</head>
+<body>
+    {% for blog in blogs %}
+        <div class="blog_body">
+            <div class="blog_title"><a href="/blog/detail/?id={{ blog.id }}"></a></div>
+            <div class="blog_info">
+                <ul class="blog_info_list">
+                    <li>Category: {{ blog.category }}</li>
+                    <li>Post Time: {{ blog.timeStamp }}</li>
+                    <li>Tags:
+                        {% for tag in blog.tags.all %}
+                            {{ tag.name }}
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            <div class="blog_content">
+                {{ blog.content }}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
