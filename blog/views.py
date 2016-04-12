@@ -1,13 +1,8 @@
 # coding=utf-8
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from blog.models import Blog
-
+from django.shortcuts import render
+from blog.models import Article
 
 # Create your views here.
-
-
-def blog_list(request):
-    blogs = Blog.objects.all().order_by('timeStamp')
-    return render_to_response('index.html', {'blogs':blogs}, \
-                              context_instance=RequestContext(request))
+def home(request):
+    post_list = Article.objects.all()
+    return render(request, 'home.html', {'post_list':post_list})

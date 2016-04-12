@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import blog_list
+from django.views.static import serve
+from blog.views import home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', blog_list),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': 'D:\pycharm\vicblog\static'})
+    url(r'^$', home)
 ]

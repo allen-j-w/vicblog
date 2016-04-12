@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <style type="text/css">
-        body{color:#efd;background:#453;padding:0 5em;margin:0}
-        h1{padding:2em 1em;background:#675}
-        h2{color:#bf8;border-top:1px dotted #fff;margin-top:2em}
-        p{margin:1em 0}
-    </style>
 <head>
     <meta charset="UTF-8">
-    <title>vic blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that show off a blog page with a list of posts">
+    <title>vic's blog</title>
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/487/pure-min.css">
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/487/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://labfile.oss.aliyuncs.com/courses/487/blog.css">
 </head>
 <body>
-    <h1>vic blog</h1>
-    <h3>生无所恋</h3>
-    {% block content %}
-    {% endblock %}
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-4">
+            <div class="header">
+                <h1 class="brand-title">Blog of victor</h1>
+                <h2 class="brand-tagline">Snow Memory</h2>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a class="pure-button" href="https://github.com/lucuswu">Github</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="pure-button" href="http://weibo.com/lucuswu">Weibo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="pure-button" href="http://www.zhihu.com/people/yu-wen-sheng-63">Zhihu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <div>
+                {% block content %}
+                {% endblock %}
+                <div class="footer">
+                    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+                        <ul>
+                            <li><a href="">About Me</a> </li>
+                            <li><a href="https://github.com/lucuswu">GitHub</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
