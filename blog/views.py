@@ -1,6 +1,6 @@
 # coding=utf-8
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Article
 
 
@@ -23,7 +23,7 @@ def archives(request):
         post_list = Article.objects.all()
     except Article.DoesNotExist:
         raise Http404
-    return render(request, 'archives.html', {'post_list':post_list})
+    return render(request, 'archives.html', {'post_list':post_list, 'error':False})
 
 
 def about_me(request):
@@ -36,3 +36,18 @@ def search_tag(request, tag):
     except Article.DoesNotExist:
         raise Http404
     return render(request, 'tag.html', {'post_list':post_list})
+
+
+def search_blog(request):
+    if 's' in request.GET:
+        s = request.GET['s']
+        if not s:
+            post_list = Article.objects.all()
+            return render(request, 'home.html', {'post_list':post_list})
+        else:
+            post_list = Article.objects.filter(title__icontains=s)
+            if len(post_list) == 0:
+                return render(request, 'archives.html', {'post_list':post_list, 'error':True})
+            else:
+                return render(request, 'archives.html', {'post_list':post_list, 'error':False})
+    return redirect('/')

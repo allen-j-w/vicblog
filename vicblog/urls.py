@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import home, detail, archives, about_me
+from blog.views import home, detail, archives, about_me, search_tag, search_blog
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^(?P<id>\d+)$', detail, name='detail'),
     url(r'^archives/$', archives, name='archives'),
     url(r'^about_me/$', about_me),
+    url(r'^tag(?P<tag>\w+)/$', search_tag, name='search_tag'),
+    url(r'^search/$', search_blog, name='search')
 ]
